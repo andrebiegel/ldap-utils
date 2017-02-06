@@ -60,24 +60,6 @@
 						</goals>
 					</execution>
 				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>org.junit.platform</groupId>
-						<artifactId>junit-platform-surefire-provider</artifactId>
-						<version>${junit.platform.version}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.junit.jupiter</groupId>
-						<artifactId>junit-jupiter-engine</artifactId>
-						<version>${junit.jupiter.version}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.junit.vintage</groupId>
-						<artifactId>junit-vintage-engine</artifactId>
-						<version>${junit.vintage.version}</version>
-					</dependency>
-				</dependencies>
-
 			</plugin>
 		</plugins>
 	</build>
@@ -152,6 +134,13 @@
 					<artifactId>api-ldap-schema-data</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+
+<!-- Based Upon UNbound ID, which implements RFC 2696 (Paged ResultsControl) -->
+		<dependency>
+			<groupId>org.zapodot</groupId>
+			<artifactId>embedded-ldap-junit</artifactId>
+			<version>0.5.2</version>
 		</dependency>
 	</dependencies>
 </project>
