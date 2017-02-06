@@ -14,11 +14,13 @@ public class ModificationsTest {
 
 	@Test
 	public void testReplace() {
-
+		 // Mixing Junit 5 and AssertJ !!
 		ModificationItem[] mods = new Modifications().replace().attribute(KEY, VALUE).build();
-		org.assertj.core.api.Assertions.assertThat(mods)
-				.hasOnlyOneElementSatisfying(x -> org.assertj.core.api.Assertions.assertThat(x.getModificationOp())
-						.isEqualTo(DirContext.REPLACE_ATTRIBUTE));
+		org.assertj.core.api.Assertions.assertThat(mods).hasOnlyOneElementSatisfying(x -> Assertions.assertAll(() -> {
+			org.assertj.core.api.Assertions.assertThat(x.getModificationOp()).isEqualTo(DirContext.REPLACE_ATTRIBUTE);
+			org.assertj.core.api.Assertions.assertThat(x.getAttribute().getID()).isEqualTo(KEY);
+			org.assertj.core.api.Assertions.assertThat((String) x.getAttribute().get()).isEqualTo(VALUE);
+		}));
 	}
 
 	@Test
