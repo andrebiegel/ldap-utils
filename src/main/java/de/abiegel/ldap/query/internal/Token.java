@@ -1,7 +1,7 @@
 package de.abiegel.ldap.query.internal;
 
 /**
- * Base Token for all Languages Elements
+ * Base Token for all Language Elements
  * 
  * @author usiabiegel
  *

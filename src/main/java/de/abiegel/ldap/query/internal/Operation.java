@@ -3,9 +3,10 @@ package de.abiegel.ldap.query.internal;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
- * &(() ()())
+ * Base Operation
  * 
  * @author usiabiegel
  *
@@ -19,6 +20,10 @@ public interface Operation extends Token {
 		return children().stream().map(Token::asString).collect(Collectors.joining());
 	}
 
+	default List<Token> childrenAsList(Stream<Token> children) {
+		return children.collect(Collectors.toList());
+	}
+	
 	default String operation(String op) {
 		return "(" + op + childrenAsString() + ")";
 	}
