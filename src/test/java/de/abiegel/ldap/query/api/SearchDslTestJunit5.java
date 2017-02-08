@@ -6,7 +6,9 @@ import static de.abiegel.ldap.query.api.Query.not;
 import static de.abiegel.ldap.query.api.Query.or;
 import static de.abiegel.ldap.query.api.Query.query;
 
+import org.apache.directory.api.ldap.model.filter.Assertion;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
 
@@ -18,6 +20,7 @@ public class SearchDslTestJunit5 {
 	 * .
 	 */
 	@Test
+	@DisplayName("Testing Dsl access Class")
 	public void testQuery() {
 		Assertions.assertAll("simple query",
 				() -> Assertions.assertEquals("(test=value)", query(attr("test", "value")).asString()));
@@ -30,6 +33,7 @@ public class SearchDslTestJunit5 {
 	 * .
 	 */
 	@Test
+	@DisplayName("conjunction test")
 	public void testAnd() {
 		Assertions.assertAll("And", () -> {
 			Assertions.assertEquals("(&(test=value)(test2=value2))",
@@ -47,6 +51,7 @@ public class SearchDslTestJunit5 {
 	 * .
 	 */
 	@Test
+	@DisplayName("disjunction test")
 	public void testOr() {
 		Assertions.assertEquals("(|(test=value)(test2=value2))",
 				query(or(attr("test", "value"), attr("test2", "value2"))).asString());
@@ -58,9 +63,11 @@ public class SearchDslTestJunit5 {
 	 * .
 	 */
 	@Test
+	@DisplayName("negation test")
 	public void testNot() {
-		Assertions.assertEquals("(!(test=value))",
-				query(not(attr("test" , "value"))).asString());
+		Assertions.assertEquals("(!(test=value))", query(not(attr("test", "value"))).asString());
+		Assertions.assertThrows(UnsupportedOperationException.class,
+				() -> not(attr("test", "value")).add(attr("test", "value2")));
 	}
 
 	@Test

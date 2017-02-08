@@ -35,12 +35,13 @@ public interface Operation extends Token {
 	 * @param child, {@link Token} to add
 	 * @throws UnsupportedOperationException, if {@link Operation} does not support to add former tokens,like {@link Not}
 	 */
-	default void add(Token child) {
+	default Operation add(Token child) {
 		if (isMultiValueOp()) {
 			children().add(child);
 		}else{
 			throw new UnsupportedOperationException("Not cannot have multiple values");
 		}
+		return this;
 	}
 	
 	default String operation(String op) {
