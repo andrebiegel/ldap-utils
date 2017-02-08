@@ -59,8 +59,8 @@ public class SearchDslTestJunit5 {
 	 */
 	@Test
 	public void testNot() {
-		Assertions.assertEquals("(!(test=value)(test2=value2))",
-				query(not(attr("test" , "value"), attr("test2" , "value2"))).asString());
+		Assertions.assertEquals("(!(test=value))",
+				query(not(attr("test" , "value"))).asString());
 	}
 
 	@Test
