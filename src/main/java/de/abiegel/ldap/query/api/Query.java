@@ -1,5 +1,7 @@
 package de.abiegel.ldap.query.api;
 
+import java.util.stream.Stream;
+
 import de.abiegel.ldap.query.internal.And;
 import de.abiegel.ldap.query.internal.Attribute;
 import de.abiegel.ldap.query.internal.Exists;
@@ -41,6 +43,10 @@ public final class Query {
 	public static Operation and(Token... children) {
 		return And.and(children);
 	}
+	public static Operation and(Stream<Token> children) {
+		return And.and(children);
+	}
+
 	/**
 	 * public factory method for an {@link Or} Operation
 	 * @param children
@@ -49,6 +55,10 @@ public final class Query {
 	public static Operation or(Token... children) {
 		return Or.or(children);
 	}
+	public static Operation or(Stream<Token> children) {
+		return Or.or(children);
+	}
+
 	/**
 	 * public factory method for an {@link Not} Operation
 	 * @param children
@@ -56,6 +66,9 @@ public final class Query {
 	 */
 
 	public static Operation not(Token... children) {
+		return Not.not(children);
+	}
+	public static Operation not(Stream<Token> children) {
 		return Not.not(children);
 	}
 
