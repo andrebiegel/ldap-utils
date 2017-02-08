@@ -5,6 +5,7 @@ import java.util.stream.Stream;
 import de.abiegel.ldap.query.internal.And;
 import de.abiegel.ldap.query.internal.Attribute;
 import de.abiegel.ldap.query.internal.Exists;
+import de.abiegel.ldap.query.internal.HasNot;
 import de.abiegel.ldap.query.internal.Not;
 import de.abiegel.ldap.query.internal.Operation;
 import de.abiegel.ldap.query.internal.Or;
@@ -65,10 +66,7 @@ public final class Query {
 	 * @return
 	 */
 
-	public static Operation not(Token... children) {
-		return Not.not(children);
-	}
-	public static Operation not(Stream<Token> children) {
+	public static Operation not(Token children) {
 		return Not.not(children);
 	}
 
@@ -90,4 +88,9 @@ public final class Query {
 		return Exists.exists(key);
 	}
 
+	public static Operation hasNot(String... keys) {
+		return HasNot.hasNot(keys);
+	}
+
+	
 }
