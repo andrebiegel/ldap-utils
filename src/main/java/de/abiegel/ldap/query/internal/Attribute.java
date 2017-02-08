@@ -1,13 +1,14 @@
 package de.abiegel.ldap.query.internal;
 
-public interface Attribute extends Token {
-    default String asString() {
-        return "(" +key() + "=" + value() + ")";
-    }
-    
+public interface Attribute extends Filter {
+
 	String value();
 	String key();
-
+	
+	default String op() {
+	        return Filter.EQUAL;
+	}
+	
 	static Attribute attr(String key, String value) {
 		return new Attribute() {
 
