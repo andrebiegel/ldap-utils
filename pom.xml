@@ -77,6 +77,24 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit.jupiter.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.vintage</groupId>
+			<artifactId>junit-vintage-engine</artifactId>
+			<version>${junit.vintage.version}</version>
+		</dependency>
+
+		<!-- for eclipse -->
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-runner</artifactId>
+			<version>${junit.platform.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
 			<!-- use 2.6.0 for Java 7 projects -->
@@ -136,7 +154,7 @@
 			</exclusions>
 		</dependency>
 
-<!-- Based Upon UNbound ID, which implements RFC 2696 (Paged ResultsControl) -->
+		<!-- Based Upon UNbound ID, which implements RFC 2696 (Paged ResultsControl) -->
 		<dependency>
 			<groupId>org.zapodot</groupId>
 			<artifactId>embedded-ldap-junit</artifactId>

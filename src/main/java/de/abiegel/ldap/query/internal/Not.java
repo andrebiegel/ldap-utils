@@ -2,8 +2,6 @@ package de.abiegel.ldap.query.internal;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public interface Not extends Operation {
 	public static final String NOT = "!";
@@ -11,11 +9,6 @@ public interface Not extends Operation {
 	static Operation not(Token child) {
 		return new Not() {
 			
-			@Override
-			public boolean isMultiValueOp() {
-				return false;
-			}
-
 			@Override
 			public String asString() {
 				return operation(NOT);
@@ -25,6 +18,7 @@ public interface Not extends Operation {
 			public List<Token> children() {
 				return Arrays.asList(child);
 			}
+
 		};
 	}
 }

@@ -6,13 +6,15 @@ import static de.abiegel.ldap.query.api.Query.not;
 import static de.abiegel.ldap.query.api.Query.or;
 import static de.abiegel.ldap.query.api.Query.query;
 
-import org.apache.directory.api.ldap.model.filter.Assertion;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 
-public class SearchDslTestJunit5 {
+@RunWith(JUnitPlatform.class)
+public class SearchDslJunit5Test {
 
 	/**
 	 * Test method for
@@ -38,9 +40,12 @@ public class SearchDslTestJunit5 {
 		Assertions.assertAll("And", () -> {
 			Assertions.assertEquals("(&(test=value)(test2=value2))",
 					query(and(attr("test", "value"), attr("test2", "value2"))).asString());
-			Assertions.assertEquals("(&(test=value)(&(test=value)(test2=value2))(test2=value2))",
+			Assertions.assertEquals("(&(test=value)(test2=value2)(&(test=value)(test2=value2)))",
 					query(and(attr("test", "value"), attr("test2", "value2"),
 							and(attr("test", "value"), attr("test2", "value2")))).asString());
+			Assertions.assertEquals("(&(test=value)(test2=value2)(&(test=value)(test2=value2)))",
+					query(and(attr("test", "value"), attr("test2", "value2"),
+							and(attr("test", "value")).add(attr("test2", "value2")))).asString());
 		});
 
 	}

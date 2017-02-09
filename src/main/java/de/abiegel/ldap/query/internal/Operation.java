@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import javax.naming.directory.InvalidSearchFilterException;
-
 /**
  * Base Operation
  * 
@@ -14,7 +12,7 @@ import javax.naming.directory.InvalidSearchFilterException;
  *
  */
 public interface Operation extends Token {
-	default List<Token> children() {
+	default List<Token> children(){
 		return Collections.emptyList();
 	}
 
@@ -26,21 +24,13 @@ public interface Operation extends Token {
 		return children.collect(Collectors.toList());
 	}
 
-	default boolean isMultiValueOp() {
-		return true;
-	}
-
 	/**
 	 * Adds {@link Token} to Operation
 	 * @param child, {@link Token} to add
 	 * @throws UnsupportedOperationException, if {@link Operation} does not support to add former tokens,like {@link Not}
 	 */
-	default Operation add(Token child) {
-		if (isMultiValueOp()) {
-			children().add(child);
-		}else{
-			throw new UnsupportedOperationException("Not cannot have multiple values");
-		}
+	default Operation add(Token child){
+		this.children().add(child);
 		return this;
 	}
 	
