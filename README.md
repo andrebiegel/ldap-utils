@@ -1,10 +1,10 @@
 # ldap-utils
 
 ## Search Query DSL
-The Query dsl is a nested Java 8 dsl to construct ldap search filter queries
+The Query dsl is a nested Java 8 dsl to construct ldap search filter queries. Some might think , yet another ldap lib.. of course Spring also offers a (fluent) dsl to achieve this, but i wanted to see how it is to write one, so i wrote this one.. use it or not, if let me know (would be nice)...  
 ### Usage
 
-Starting point is the Query class allowing to access factory methods of every kind of Token, which might be query operators or filters (without filter operators, an Attribute filter filters upon equality) 
+Starting point is the Query class allowing to access factory methods of every kind of Tokens, which might be query operators or filters (without filter operators, an Attribute filter filters upon equality) 
 
 disjunction:
 
