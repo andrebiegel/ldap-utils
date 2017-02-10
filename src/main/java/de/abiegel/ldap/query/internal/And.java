@@ -23,12 +23,12 @@ public interface And extends Operation {
 
 			@Override
 			public List<Token> children() {
-				return new ArrayList<Token>(Arrays.asList(children));
+				return Arrays.asList(children);
 			}
 			
 			@Override
 			public Operation add(Token child) {
-				List<Token> ref = this.children();
+				List<Token> ref = new ArrayList<Token>(this.children());
 				ref.add(child);
 				return and(ref.toArray(new Token[ref.size()]));
 			}
@@ -49,7 +49,7 @@ public interface And extends Operation {
 			
 			@Override
 			public Operation add(Token child) {
-				List<Token> ref = this.children();
+				List<Token> ref = new ArrayList<Token>(this.children());
 				ref.add(child);
 				return and(ref.toArray(new Token[ref.size()]));
 			}

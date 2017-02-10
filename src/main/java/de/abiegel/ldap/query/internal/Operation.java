@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 
 /**
  * Base Operation
+ * Immutable
  * 
  * @author usiabiegel
  *
